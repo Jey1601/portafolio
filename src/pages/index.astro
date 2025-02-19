@@ -1,11 +1,89 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Interfaces
+import type {PreSkill as IPreSkill ,SocialNetwork as ISocialNetwork } from '../interfaces/interface.ts';
+
+// Components
+import  PreSkill  from '../components/PreSkill.astro';
+import SocialNetwork from '../components/SocialNetwork.astro';
+
+//Data
+import {preSkills, socialNetworks} from '../content/data/db.ts';
 ---
 
 <Layout>
-	<Welcome />
+	<main class="w-full h-screen flex items-center justify-center">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 w-full h-full">
+
+			<div class="  p-4 flex flex-col items-start justify-center " style="padding:5vw;">
+				<p class="text-gray-800" style="font-size:1.5rem;">Hola, Hi, こんにちは  </p>
+				<div class="flex gap-2">
+					<p class="font-extrabold text-gray-800"  style="font-size:2rem;" >Me llamo</p><p class="font-extrabold" style="color:#AACBD2 ; font-size:2rem;">Jeyson</p>
+				</div>
+				
+				<p class="text-gray-800 pt-4" style="font-size:1.2rem;">
+					Apasionado por la tecnología, los idiomas y el aprendizaje continuo, siempre busco crecer tanto personal como profesionalmente.
+				</p>
+
+				<div class="pt-8">
+					<button style="background-color: #AACBD2; font-size: 1.5rem; width: 15vw;" class="font-bold text-white px-4 py-1 rounded-full ">Saber más</button>
+				</div >
+				<div class ="flex gap-2 pt-4 ">
+					<!--Render of Social Networks  --> 
+					{
+						socialNetworks.map((socialNetwork:ISocialNetwork)=>(	
+							<SocialNetwork
+								src_image={socialNetwork.src_image}
+								name_network={socialNetwork.name_network}
+								url={socialNetwork.url}
+							/>
+						))
+				    }
+					
+				</div>
+			</div>
+
+			<div class=" p-4 flex items-center justify-center">
+				<Image
+				src="/images/profile_picture.webp"
+				alt="Jeyson Espinal"
+				width={500}
+                height={500}
+			    class="w-full  h-auto rounded-full"
+			  />
+				
+			</div>
+
+			<div class="  p-4 flex flex-col items-start justify-center " style="padding:5vw;">
+				
+				<p class="font-extrabold text-gray-800"  style="font-size:2rem;" >Frontend Developer</p>
+				
+				<p class="text-gray-800 pt-4" style="font-size:1.2rem;">
+					A lo largo de mi trayectoria he tenido la oportunidad de participar en diversos proyectos académicos, destacándome principalmente en el desarrollo front-end
+				</p>
+
+				<div>
+					<p class="text-gray-800 pt-8 " style="font-size:1.2rem; ">
+						Habilidades Técnicas
+					</p>
+					<div class="flex pt-4 gap-2">
+							<!--Render of preview of skills  --> 
+						{
+							preSkills.map((skill:IPreSkill) => (
+								<PreSkill 
+									src_image={skill.src_image}
+									name_skill={skill.name_skill}
+								/>
+							))
+						}
+
+					</div>
+				</div>
+				
+			</div>
+		</div>  
+	</main>
 </Layout>
