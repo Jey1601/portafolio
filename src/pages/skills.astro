@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Skills from '../components/Skills.astro';
+
+import {skills}  from  '../content/data/db.ts';
 --- 
 
 <Layout>
-    <main class="w-full h-screen flex items-center justify-center">
-        <h1 style="color: black;">skills</h1>
+    <main class="w-full h-auto p-5 flex items-center justify-center">
+       <Skills title="Habilidades" skills={skills} />
     </main>
    
 </Layout>    
