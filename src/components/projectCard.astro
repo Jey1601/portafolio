@@ -1,17 +1,86 @@
 ---
+import '../styles/global.css';
+
 export interface Props {
     title: string;
     description: string;
     href: string;
-
+    image: string;
 }
 
-const { title, description, href } = Astro.props;
+import { Image } from 'astro:assets';
+
+const { title, description, href, image } = Astro.props;
 ---
 
-<a href={href} class="block" > 
-    <div class=" p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+<a href={href} class="block card">
+    <div class="w-full h-70 overflow-y-auto no-scrollbar p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+        <div  class="show-img relative rounded-xl w-full h-40 overflow-hidden">
+            <Image
+                src={image}
+                alt="Project"
+                width={100}
+                height={100}
+                style={{ width: '100%', objectFit: 'cover' }}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+        </div>
         <h3 class="text-xl font-semibold text-orange-900 mb-3">{title}</h3>
-        <p class="text-gray-600">{description}</p>
+        <p class="hide-des quaternary-color">{description}</p>
     </div>
 </a>
+
+<style>
+
+    .show-img {
+        height: 40;
+        opacity: 1;
+        transition: height 1s, opacity 1s;
+    }
+
+    .hide-img {
+        height: 0;
+        opacity: 0;
+        transition: height 1s, opacity 1s;
+    }
+
+    .hide-des{
+        opacity: 0;
+        transition: height 1s, opacity 1s;
+    }
+
+    .show-des{
+        opacity: 1;
+        transition: height 1s, opacity 1s;
+    }
+
+
+
+   
+</style>
+
+<script>
+ 
+    let cards = document.querySelectorAll('.card');
+    for (let i = 0; i < cards.length; i++) {
+   
+            cards[i].addEventListener('mouseover', () => {
+                cards[i].querySelector('.hide-des')?.classList.add('show-des');
+                cards[i].querySelector('.hide-des')?.classList.remove('hide-des');
+                cards[i].querySelector('.show-img')?.classList.add('hide-img');
+                cards[i].querySelector('.show-img')?.classList.remove('show-img');
+            });
+
+            cards[i].addEventListener('mouseout', () => {
+                cards[i].querySelector('.show-des')?.classList.add('hide-des');
+                cards[i].querySelector('.show-des')?.classList.remove('show-des');      
+                cards[i].querySelector('.hide-img')?.classList.add('show-img');
+                cards[i].querySelector('.hide-img')?.classList.remove('hide-img');
+            });
+
+
+    }
+
+ 
+
+</script>
