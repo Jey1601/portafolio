@@ -116,3 +116,28 @@ strong {
 a {
   color: var(--secondary-bold);
 }
+
+
+.toc-level-1 {
+  @apply ml-0; 
+}
+
+.toc-level-2 {
+  @apply ml-4; 
+}
+
+.toc-level-3 {
+  @apply ml-8; 
+}
+
+.toc-level-4 {
+  @apply ml-12; 
+}
+
+.toc-level-5 {
+  @apply ml-16; 
+}
+
+.toc-level-6 {
+  @apply ml-20; 
+}

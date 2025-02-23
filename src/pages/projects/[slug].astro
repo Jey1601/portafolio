@@ -37,7 +37,7 @@ const { Content, headings } = await entry.render();
               <h2 class="text-2xl font-semibold mb-4 quaternary-color " >Contenido</h2>
               <ul class="space-y-2">
                 {headings.map((heading: any) => (
-                  <li class={`toc-level-${heading.depth} ml-${(heading.depth - 1) * 4}`}>
+                  <li class={`toc-level-${heading.depth} `}>
                     <a href={`#${heading.slug}`} class="quaternary-color   ">
                       {heading.text}
                     </a>

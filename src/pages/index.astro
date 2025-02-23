@@ -1,7 +1,7 @@
 ---
 
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+
 
 // Interfaces
 import type {PreSkill as IPreSkill ,SocialNetwork as ISocialNetwork } from '../interfaces/interface.ts';
@@ -66,7 +66,7 @@ import {preSkills, socialNetworks} from '../content/data/db.ts';
 					</p>
 					<div class="flex pt-4 gap-2">
 							<!--Render of preview of skills  --> 
-						{
+						{	
 							preSkills.map((skill:IPreSkill) => (
 								<PreSkill 
 									src_image={skill.src_image}

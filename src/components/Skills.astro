@@ -21,13 +21,13 @@ const {title,skills} = Astro.props;
                    
                     <div class="space-y-4">
                         {
-                            // Recorrer las subcategorías
+                            // Loop through the subcategories
                             Object.entries(subcategories).map(([subcategory, skillList]) => (
                                 <div >
                                     <h4 class="text-lg font-semibold mb-2">{subcategory}</h4>
                                     <div class="flex flex-wrap space-y-2 flex gap-8">
                                         {
-                                            // Recorrer las habilidades en cada subcategoría
+                                            // Loop through the skills in each subcategory
                                             skillList
                                             .slice()
                                             .sort((a: ISkill, b: ISkill) => b.percentage - a.percentage)
