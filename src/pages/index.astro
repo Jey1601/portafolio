@@ -9,7 +9,7 @@ import type {PreSkill as IPreSkill ,SocialNetwork as ISocialNetwork } from '../i
 // Components
 import  PreSkill  from '../components/PreSkill.astro';
 import SocialNetwork from '../components/SocialNetwork.astro';
-
+import ProfileCover from '../components/ProfileCover.astro';
 //Data
 import {preSkills, socialNetworks} from '../content/data/db.ts';
 ---
@@ -25,10 +25,10 @@ import {preSkills, socialNetworks} from '../content/data/db.ts';
 				</div>
 				
 				<p class="text-gray-800 pt-4" style="font-size:1.2rem;">
-					Apasionado por la tecnología, los idiomas y el aprendizaje continuo, siempre busco crecer tanto personal como profesionalmente.
+					Entusiasta del desarrollo web. Apasionado por la tecnología, los idiomas y el aprendizaje continuo, siempre busco ayudar a cerrar la brecha entre la operación y la tecnología mediante la implementación eficiente de soluciones tecnológicas.
 				</p>
 
-					<button   onclick="window.open('/public/docs/cv.pdf', '_blank')"  class="bg-primary font-bold text-white px-4 py-1 rounded-full ">Saber más</button>
+					<button   onclick="window.open('/public/docs/cv.pdf', '_blank')"  class="popUp bg-primary font-bold text-white px-4 py-1 rounded-full ">Saber más</button>
 		
 				<div class ="flex gap-2 pt-4 ">
 					<!--Render of Social Networks  --> 
@@ -45,23 +45,19 @@ import {preSkills, socialNetworks} from '../content/data/db.ts';
 				</div>
 			</div>
 
-			<div class="  flex items-center justify-center">
-				<Image
-				src="/images/profile_picture.webp"
-				alt="Jeyson Espinal"
-				width={500}
-                height={500}
-			    class="w-full  h-auto rounded-full"
-			  />
-				
+			<div class=" flex items-center justify-center">
+				<ProfileCover
+					src_base="/images/profile_picture.webp"
+					src_hover ="/images/profile.webp"
+					alt = "Jeyson Espinal"
+				/>
 			</div>
-
 			<div class="   flex flex-col items-start justify-center " style="padding:5vw;">
 				
 				<p class="font-extrabold text-gray-800"  style="font-size:2rem;" >Frontend Developer</p>
 				
 				<p class="text-gray-800 pt-4" style="font-size:1.2rem;">
-					A lo largo de mi trayectoria he tenido la oportunidad de participar en diversos proyectos académicos, destacándome principalmente en el desarrollo front-end
+					Participante de distintos proyectos académicos, destacándome principalmente en el desarrollo front-end. Esta experiencia me ha permitido fortalecer mis habilidades en la captura de necesidades clave de datos, diseñando interfaces intuitivas que facilitan su uso y aseguran la relavancia de la información.
 				</p>
 
 				<div>
