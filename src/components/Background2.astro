@@ -1,0 +1,57 @@
+---
+import '../styles/global.css'
+---
+<div class="blob-outer-container">
+    <div class="blob-inner-container">
+        <div class="blob"></div>
+    </div>        
+</div>
+
+
+<style>
+    .blob-outer-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+        inset: 0;
+        margin: auto;
+        filter: blur(100px);
+    }
+
+    .blob-inner-container {
+        border-radius: 99999px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 100vw;
+        height: 100vh;
+        min-width: 1000px;
+        min-height: 1000px;
+        overflow: hidden;
+        transform: scale(1);
+        opacity: 0.6;
+
+    }
+
+    .blob {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        inset: 0;
+        margin: auto;
+        background: conic-gradient(from 0deg,#F7CFD8,#F4F8D3,#A6F1E0,#73C7C7  );
+        animation: spinBlob 60s linear infinite;
+        opacity: 0.6;
+    }
+
+    @keyframes spinBlob {
+        0% {
+            transform: rotate(0deg) scale(2);
+        }
+        100% {
+            transform: rotate(360deg) scale(2);
+        }
+    }
+</style>
