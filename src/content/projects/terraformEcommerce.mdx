@@ -1,0 +1,108 @@
+---
+title: "Proyecto Terraform E-commerce"
+description: "Despliegue de arquitectura en la nube escalable para una plataforma de comercio electrónico, utilizando Terraform sobre Microsoft Azure."
+image: "/images/projects/terraform.png"
+---
+
+# Proyecto Terraform E-commerce
+
+Este proyecto fue desarrollado como parte de una práctica avanzada de arquitectura en la nube, con el objetivo de diseñar e implementar una solución **escalable, flexible y distribuida** para una organización dedicada al comercio electrónico. La solución contempla el manejo de contenido estático, aplicaciones web, tareas en segundo plano, almacenamiento de archivos y uso de caché, todo desplegado en **Microsoft Azure** usando **Terraform** como infraestructura como código.
+
+## Mi Rol en el Proyecto
+
+Como **arquitecto de infraestructura en la nube**, estuve a cargo del **diseño y la implementación de la arquitectura completa usando Terraform**. 
+
+Mis responsabilidades incluyeron:
+
+- **Diseño de Arquitectura**: Creé un diagrama arquitectónico detallado que integraba todos los componentes requeridos: almacenamiento, backend, frontend, procesamiento en segundo plano y capa de caché.
+- **División del Proyecto en Repositorios**: Separé el código en tres repositorios para reflejar la lógica modular:
+  - Repositorio A: Almacenamiento y sistema de mensajería.
+  - Repositorio B: Infraestructura base para las aplicaciones web.
+  - Repositorio C: Configuración final de apps, base de datos y caché.
+- **Automatización con Terraform**: Utilicé Terraform para aprovisionar recursos en Azure, generando infraestructuras reproducibles y fáciles de gestionar.
+- **Evidencia de Despliegue**: Capturé pruebas del funcionamiento de cada componente, desde la consola de recursos hasta los accesos a las aplicaciones desplegadas.
+- **Reflexión Técnica**: Documenté aprendizajes sobre el uso de múltiples repositorios y la importancia de separar responsabilidades para una mejor mantenibilidad.
+
+## Áreas de Impacto
+
+### Contenido Estático
+
+La plataforma incluye un sitio web estático alojado en *Azure Static Web Apps*, lo que permite desplegar contenido rápidamente desde un repositorio y servirlo a escala global con integración continua y entrega automática. Esta solución es ideal para mostrar productos y facilitar una navegación rápida, segura y optimizada.
+
+### Aplicaciones Web
+
+Se desarrollaron dos interfaces:
+- **Pública**: Interfaz de cara al cliente final.
+- **Administrativa**: Dashboard para la gestión interna.
+
+Ambas fueron desplegadas en **Azure App Services**, utilizando una arquitectura desacoplada.
+
+### Procesamiento Asíncrono
+
+Se implementó un sistema de mensajería en segundo plano utilizando *Azure Queue Storage*, el servicio de colas dentro de Azure Storage Account. Este mecanismo permite gestionar tareas asincrónicas como el procesamiento de pedido o generación de facturas, evitando la saturación del servidor principal y asegurando una ejecución eficiente de procesos en background.
+
+
+### Base de Datos Relacional y Caché
+
+Se utilizó Azure SQL Database, basada en *SQL Server*, para asegurar consistencia transaccional y alta disponibilidad en el manejo de datos críticos del sistema. Además, se implementó *Azure Cache for Redis* como capa de caché para acelerar consultas frecuentes y reducir la carga sobre la base de datos principal, mejorando el rendimiento general de la plataforma.
+
+### Almacenamiento de Archivos
+
+Archivos como imágenes y documentos fueron centralizados en **Azure Blob Storage**, garantizando alta disponibilidad y escalabilidad.
+
+## Tecnologías Utilizadas
+
+- **Terraform** (Infraestructura como código)
+- **Microsoft Azure**: Blob Storage, App Services, SQL Server, Redis Cache, Azure Storage Account, Azure Static Web Apps
+- **Azure Container Registry (ACR)** (para contenerización de aplicaciones)
+- **PostgreSQL** (base de datos relacional)
+- **Redis** (capa de caché)
+
+## Repositorios del Proyecto
+
+<div class="flex gap-4 pt-5 items-center">
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/Jey1601/IS912-Terraform-A' target="_blank">
+        <img
+            src='/images/github-icon.webp'
+            alt='GitHub'
+            width={100}
+            height={100}
+            style="width: 1.5vw; min-width: 20px;"
+        />
+        <p>Repositorio A</p>
+    </a>
+  </div>
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/angel-513/TerraformProject' target="_blank">
+        <img
+            src='/images/github-icon.webp'
+            alt='GitHub'
+            width={100}
+            height={100}
+            style="width: 1.5vw; min-width: 20px;"
+        />
+        <p>Repositorio B</p>
+    </a>
+  </div>
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/usuario/repo-c' target="_blank">
+        <img
+            src='/images/github-icon.webp'
+            alt='GitHub'
+            width={100}
+            height={100}
+            style="width: 1.5vw; min-width: 20px;"
+        />
+        <p>Repositorio C</p>
+    </a>
+  </div>
+</div>
+
+## Diagrama Arquitectónico
+
+![Diagrama Arquitectónico del Proyecto Terraform 2025](/images/projects/terraform.png)
+
+## Conclusiones
+
+En construcción.
