@@ -82,12 +82,12 @@ export const socialNetworks:SocialNetwork[] = [
     {
         src_image: "/images/linkedin-icon.webp",
         name_network: "Youtube",
-        url: "https://www.youtube.com/@fernandoespinalguevara3687"
+        url: "https://www.linkedin.com/in/jeysonespinal/"
     },
     {
         src_image: "/images/youtube-icon.webp",
         name_network: "Linkedin",
-        url: "https://www.linkedin.com/in/jeysonespinal/"
+        url: "https://www.youtube.com/@fernandoespinalguevara3687"
     },
 
 ];
