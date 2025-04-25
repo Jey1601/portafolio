@@ -1,0 +1,90 @@
+---
+title: "Generador de Reportes V2 - PokeAPI Enriquecida"
+description: "Evolución de una plataforma de generación de reportes CSV con enriquecimiento de datos, eliminaciones avanzadas y muestreo aleatorio. Desplegado en Azure y gestionado con Terraform."
+image: "/images/projects/pokequeue.png"
+date: "2025-05-25"
+---
+
+# Generador de Reportes V2 - PokeAPI Enriquecida
+
+Este proyecto representa la evolución de una aplicación web basada en microservicios, cuya funcionalidad principal es generar reportes en formato CSV utilizando datos obtenidos de la [PokeAPI](https://pokeapi.co/). La versión V2 mejora la experiencia del usuario, optimiza el backend, y automatiza el despliegue en Azure utilizando Terraform como infraestructura como código.
+
+El propósito de esta evolución fue implementar nuevas funcionalidades críticas para el manejo y enriquecimiento de datos, garantizando al mismo tiempo que la arquitectura se mantuviera modular, escalable y desplegable en un entorno de nube real.
+
+## Arquitectura del Proyecto
+
+La solución está compuesta por distintos componentes desplegados en **Microsoft Azure**:
+
+- **Frontend (Next.js)**: Aplicación React que consume la API y permite crear y visualizar reportes.
+- **API Backend (FastAPI)**: Proporciona endpoints REST para crear, eliminar y consultar reportes.
+- **Azure Functions**: Función asincrónica que procesa la generación del CSV enriquecido.
+- **Base de Datos**: Azure SQL Database para almacenar los metadatos de los reportes.
+- **Blob Storage**: Almacenamiento de archivos CSV generados.
+- **Queue Storage**: Comunicación entre backend y worker.
+- **Terraform**: Aprovisionamiento de todos los recursos anteriores.
+
+![Arquitectura del proyecto](/images/projects/pokequeue.png)
+
+
+## Funcionalidades Implementadas
+
+Durante esta asignación, se incorporaron las siguientes mejoras clave:
+
+ **Eliminación Completa de Reportes**: Ahora los usuarios pueden eliminar reportes desde la UI. Esto incluye:
+  - Eliminación del archivo CSV en Azure Blob Storage.
+  - Eliminación del registro en la base de datos.
+  - Actualización dinámica de la interfaz.
+
+ **Enriquecimiento de Reporte**: Cada reporte ahora contiene información detallada del Pokémon, incluyendo:
+  - Estadísticas base: HP, Ataque, Defensa, Ataque Especial, Defensa Especial, Velocidad.
+  - Lista de habilidades del Pokémon.
+
+ **Muestreo Aleatorio**: Los usuarios pueden especificar el número máximo de registros a incluir en su reporte. El sistema realiza un muestreo aleatorio de los resultados de la PokeAPI antes de la generación del CSV.
+
+## Desafíos Enfrentados y Soluciones
+
+- **Consumo de múltiples endpoints en PokeAPI**: Para enriquecer los datos fue necesario realizar múltiples llamadas adicionales, una por cada Pokémon. Se implementó manejo robusto de errores y se usó asincronía eficiente para evitar bloqueos en la función.
+- **Manejo de muestreo en listas grandes**: Se utilizó `random.sample()` y validaciones para manejar tamaños menores al total de resultados sin sobrecargar la memoria.
+- **Sincronización entre eliminación de blob y base de datos**: Se diseñó una lógica transaccional simple para que, si una operación falla, el sistema maneje adecuadamente los estados intermedios.
+
+## Repositorios del Proyecto
+
+<div class="flex gap-4 pt-5 items-center">
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/Jey1601/poke.queue.ui.git' target="_blank">
+        <img src='/images/github-icon.webp' alt='GitHub' width={100} height={100} style="width: 1.5vw; min-width: 20px;" />
+        <p>Frontend (Next.js)</p>
+    </a>
+  </div>
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/Jey1601/poke.queue.api.git' target="_blank">
+        <img src='/images/github-icon.webp' alt='GitHub' width={100} height={100} style="width: 1.5vw; min-width: 20px;" />
+        <p>API (FastAPI)</p>
+    </a>
+  </div>
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/Jey1601/poke.queue.function.git' target="_blank">
+        <img src='/images/github-icon.webp' alt='GitHub' width={100} height={100} style="width: 1.5vw; min-width: 20px;" />
+        <p>Azure Function</p>
+    </a>
+  </div>
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/Jey1601/poke.queue.sql.git' target="_blank">
+        <img src='/images/github-icon.webp' alt='GitHub' width={100} height={100} style="width: 1.5vw; min-width: 20px;" />
+        <p>SQL Scripts</p>
+    </a>
+  </div>
+  <div class="popUp flex justify-center items-center flex-col">
+    <a href='https://github.com/Jey1601/poke.terraform.git' target="_blank">
+        <img src='/images/github-icon.webp' alt='GitHub' width={100} height={100} style="width: 1.5vw; min-width: 20px;" />
+        <p>Terraform (IaC)</p>
+    </a>
+  </div>
+</div>
+
+## Aplicación Desplegada
+
+- **Interfaz de Usuario (UI)**: [https://ui-pokequeue-dev-jey.azurewebsites.net/](https://ui-pokequeue-dev-jey.azurewebsites.net/)
+- **API FastAPI**: [https://api-pokequeue-dev-jey.azurewebsites.net/](https://api-pokequeue-dev-jey.azurewebsites.net/)
+- **Functio App**: [https://serverless-pokequeue-dev-jey.azurewebsites.net/](https://serverless-pokequeue-dev-jey.azurewebsites.net/)
+---

@@ -16,14 +16,16 @@ const projects: Project[] = await getCollection('projects') as Project[];
         
                 <div class="grid gap-6 md:grid-cols-2">
             
-                    {projects.map((project) => (
-                    <ProjectCard
-                        title={project.data.title}
-                        description={project.data.description}
-                        href={`/projects/${project.slug}`}
-                        image={project.data.image}
-                    />
-                    ))}
+                    {projects
+                        .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())// Orden descendente (más reciente primero)
+                        .map((project) => (
+                          <ProjectCard
+                            title={project.data.title}
+                            description={project.data.description}
+                            href={`/projects/${project.slug}`}
+                            image={project.data.image}
+                          />
+                      ))}
           
                 </div>
             </div>
