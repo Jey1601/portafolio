@@ -10,11 +10,11 @@ const projects: Project[] = await getCollection('projects') as Project[];
 
 <Layout>
     <main class="w-full h-screen flex items-start justify-center">
-        <div class="max-w-4xl mx-auto mt-8">
+        <div class="max-w-4xl mx-auto mt-5 px-5 pb-8">
 
             <h1 class="text-4xl font-bold text-orange-800 mb-6"  >Proyectos</h1>
         
-                <div class="grid gap-6 md:grid-cols-2">
+                <div class="grid gap-6 md:grid-cols-2 ">
             
                     {projects
                         .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())// Orden descendente (más reciente primero)

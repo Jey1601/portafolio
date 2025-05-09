@@ -11,9 +11,9 @@ const {src_base, src_hover, alt} = Astro.props;
 ---
 
 
-<div class="popUp relative w-[500px] h-[500px] flex items-center justify-center">
+<div id="imgsContainer" class="popUp relative w-[500px] h-[500px] flex items-center justify-center">
     <!-- Imagen Base -->
-    <div class="absolute inset-0">
+    <div id="primaryImg" class="absolute inset-0 flex items-center justify-center">
         <Image
         src={src_base}
         alt={alt}
@@ -24,7 +24,7 @@ const {src_base, src_hover, alt} = Astro.props;
     </div>
 
     <!-- Imagen que aparece con hover -->
-    <div class="absolute inset-0 opacity-0 transition-opacity duration-300 hover:opacity-100">
+    <div id="secondaryImg" class="absolute inset-0 opacity-0 transition-opacity duration-300 hover:opacity-100 flex items-center justify-center">
         <Image
         src={src_hover}
         alt={alt}
@@ -35,3 +35,160 @@ const {src_base, src_hover, alt} = Astro.props;
     </div>
 </div>
 
+<style>
+
+
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    50% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+
+    /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+
+    
+
+    #primaryImg {
+      animation: fadeIn 20s infinite;
+    }
+
+    #secondaryImg {
+      animation: fadeOut 20s infinite;
+    }
+    
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    
+
+    #primaryImg {
+      animation: fadeIn 20s infinite;
+      
+    }
+
+    #secondaryImg {
+      animation: fadeOut 20s infinite;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    
+
+    #primaryImg {
+      animation: fadeIn 20s infinite;
+    }
+
+    #secondaryImg {
+      animation: fadeOut 20s infinite;
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    
+
+    #primaryImg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;     /* Centrado vertical */
+      justify-content: center; /* Centrado horizontal */
+      
+    }
+
+    #secondaryImg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      opacity: 0;
+      transition: opacity 300ms ease;
+      animation: none;
+      }
+
+    #secondaryImg:hover {
+      opacity: 1;
+      animation: none;
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    
+
+    #primaryImg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;     /* Centrado vertical */
+      justify-content: center; /* Centrado horizontal */
+
+      animation: none;
+    }
+
+    #secondaryImg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      opacity: 0;
+      transition: opacity 300ms ease;
+      animation: none;
+      }
+
+    #secondaryImg:hover {
+      opacity: 1;
+    }
+  }
+
+</style>

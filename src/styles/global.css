@@ -60,6 +60,7 @@ body {
     color: var(--quaternary-color);
   }
 
+  
   .popUp{
     transition: transform 0.5s;
   }

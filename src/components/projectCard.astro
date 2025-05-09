@@ -26,7 +26,7 @@ const { title, description, href, image } = Astro.props;
             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
         </div>
         <h3 class="text-xl font-semibold text-orange-900 mb-3">{title}</h3>
-        <p class="hide-des quaternary-color">{description}</p>
+        <p class="description hide-des quaternary-color">{description}</p>
     </div>
 </a>
 
@@ -54,13 +54,43 @@ const { title, description, href, image } = Astro.props;
         transition: height 1s, opacity 1s;
     }
 
+        /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
+        .description{
+            display: none;
+        }
+    }
 
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        .description{
+            display: none;
+        }
+    }
 
-   
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        .description{
+            display: none;
+        }
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        .description{
+            display: block;
+        }
+    }
+
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    @media only screen and (min-width: 1200px) {.description{
+            display: block;
+        }}
+
 </style>
 
 <script>
- 
+
     let cards = document.querySelectorAll('.card');
     for (let i = 0; i < cards.length; i++) {
    
